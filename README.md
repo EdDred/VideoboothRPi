@@ -14,7 +14,7 @@ Support for playing the last video is supported via Web or Tkinter interface
 User can not delete a file
 
 The base is the Picam library: https://github.com/iizukanao/picam
-Reason for this is that it produces a synchrnozed Video and Audio file which proved to be a challenge on the Raspberry pi
+Reason for this is that it produces a synchronized mp4 Video/Audio file which proved to be a challenge on the Raspberry pi
 This Picam is run as a service as shown in the repository.
 
 For taking a Picture, i used the standard Raspistill command, since that is not supported in Picam.
