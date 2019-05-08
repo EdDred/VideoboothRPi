@@ -20,6 +20,9 @@ This Picam is run as a service as shown in the repository.
 For taking a Picture, i used the standard Raspistill command, since that is not supported in Picam.
 For it to work the picam service is temporarily stopped and restarted after taking the picture.
 
+Example:
+
+(Example_image/videbooth_example.jpg)
 
 
 
