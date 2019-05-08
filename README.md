@@ -22,7 +22,7 @@ For it to work the picam service is temporarily stopped and restarted after taki
 
 Example:
 
-(Example_image/videbooth_example.jpg)
+<img src="Example_image/videbooth_example.jpg">
 
 
 
