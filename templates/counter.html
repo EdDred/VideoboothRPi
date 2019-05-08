@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+p {
+text-align: center;
+font-size: 60px;
+}
+</style>
+</head>
+<body>
+<p id="demo"></p>
+<script>
+// var deadline = new Date("Jun 5, 2019 15:37:25").getTime();
+var t = 2
+
+var x = setInterval(function() {
+var seconds = t
+
+document.getElementById("demo").innerHTML = seconds + "s ";
+	if (t < 0) {
+		clearInterval(x);
+		document.getElementById("demo").innerHTML = "EXPIRED";
+    // window.location.href = "http://nu.nl";
+    // window.location.href = {{ url_for('view')}};
+		 // window.location.href = Flask.url_for('view', {});
+		// window.location.href = "http://127.0.0.1:5000/view";
+		window.location.href = "/view";
+	}
+t = t -1;
+}, 1000);
+</script>
+
+</body>
+</html>

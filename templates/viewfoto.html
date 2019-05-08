@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <title>View Page</title>
+  <head>
+    <link href="../static/main.css" rel="stylesheet">
+  </head>
+<body>
+
+<div class="container">
+
+<form action="{{url_for('entry')}}" method="POST">
+  <button class="button" type="submit"> Start Pagina </button>
+</form>
+<!-- {{data}} -->
+    <h2 id="demo"></h2>
+      <img source src={{data}} width=600 height=400 >
+
+    </div>
+
+    <script type="text/javascript" src="../static/socket.io.min.js"></script>
+     <script>
+     var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+     var t = 28
+
+       function videomessage(){
+         var x = setInterval(function() {
+         var seconds = t;
+         console.log(t);
+         document.getElementById("demo").innerHTML ="De opname loopt nog <br>" + seconds + "<br> seconden ";
+         if (t < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "Momentje, je video wordt zo getoond";
+            console.log("Wacht 10 seconden")
+            window.setTimeout(function(){
+              window.location.href = "/view"
+            }
+            , 10000);
+         }
+         t = t -1;
+         }, 1000);
+       };
+
+       function fotomessage(fototijd){
+          fototijd = 5
+          console.log(fototijd)
+          socket.emit('message', 'Hi server, how are you?');
+          var x = setInterval(function() {
+          var seconds = fototijd;
+          console.log(fototijd);
+          document.getElementById("demo").innerHTML ="Je foto wordt gemaakt over <br> " + seconds + "<br> seconden ";
+          if (fototijd < 0) {
+             clearInterval(x);
+             document.getElementById("demo").innerHTML = "Momentje, je foto wordt zo getoond";
+             console.log("Wacht 10 seconden")
+             window.setTimeout(function(){
+               window.location.href = "/viewfoto"
+             }
+             , 5000);
+         }
+          fototijd = fototijd -1;
+         }, 1000);
+
+        };
+
+       //
+       // socket.on('connect', function(data) {
+       //      console.log('connected');
+       //      document.getElementById("demo").innerHTML ="Connected ";
+       //
+       // });
+
+       socket.on('message', function(data) {
+            console.log('iets')
+            console.log(data);
+            if (data == 'Foto') {
+            // document.getElementById("demo").innerHTML ="ButtonPress Foto";
+            fotomessage()
+          }
+            if (data == 'Video') {
+              // document.getElementById("demo").innerHTML ="ButtonPress Video";
+              videomessage()
+            }
+       });
+
+
+     </script>
+
+  </body>
+</html>

@@ -1,0 +1,156 @@
+html,body {
+height:100%;
+margin:0;
+}
+
+
+
+h1 {
+font-family: Arial, sans-serif;;
+font-size: 30px;
+color: #DDCCCE;
+margin-top: 40px;
+
+}
+
+a:link{
+  color: white;
+
+}
+a:visited{
+  color: yellow;
+}
+
+.container {
+margin: 0 auto;
+width: 100%;
+height:100%;
+/* background-color: #006666; */
+background-color: #000000;
+color: #e6ffff;
+
+text-align:center;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  width: 30%;
+  margin: 1%;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.buttonsmall2 {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  width: 30%;
+  margin: 1%;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */
+.button5 {background-color: #555555;} /* Black */
+.button:hover {background-color: #3e8eee}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+
+.container_table {
+margin: 0 auto;
+width: 100%;
+background-color: #006666;
+color: #e6ffff;
+
+text-align:center;
+}
+
+.left {
+align: left;
+text-align: left;
+
+}
+
+.center {
+text-align: center;
+background-color: #008CBA;
+}
+
+.group{
+/* margin-top: 1%; */
+
+}
+
+/* .container h1 {
+font-family: Arial, sans-serif;;
+font-size: 30px;
+color: #DDCCCE;
+margin-top: 80px;
+
+} */
+/*
+.container form {
+  margin: 30px;
+}
+
+.container input{
+width: 350px;
+height: 15px;
+font-size: 15px;
+margin: 5px;
+padding: 20px;
+transition: all 0.2s ease-in-out;
+color: #000000;
+
+}
+
+.container p {
+margin: 200px;
+}
+
+.container table {
+border: 1px solid black;
+align: center;
+width:70%;
+margin-left:15%;
+margin-right:15%;
+color: #ffffff;
+border-collapse: collapse;
+text-align: center;
+}
+
+th, td {
+  padding: 5px;
+  text-align: right;
+}
+
+tr{
+  border: 1px solid white;
+}
+
+#headertab {
+  color:#ffff00;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.cellvideo{
+align: center;
+} */

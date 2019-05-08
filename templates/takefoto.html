@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <title>Record Video Page</title>
+  <head>
+    <link href="../static/main.css" rel="stylesheet">
+  </head>
+<body>
+
+<div class="container">
+  <form action="{{url_for('entry')}}" method="POST">
+  <button class="button button2"  type="submit"> Start Pagina </button>
+</form>
+<!-- <form id="buttonid" method="POST" action="/">
+  <input type="submit"  class="button button3" value="Video opnemen" name="Videoopnemen"/>
+</form> -->
+<h1> De foto wordt genomen over: </h1>
+    <h2 id="demo"></h2>
+</div>
+
+
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+-->
+ <script>
+ <!-- length of video is defined in t -->
+
+ var t = 5
+ console.log(t)
+ document.addEventListener('DOMContentLoaded', function(){
+     console.log("test");
+     var x = setInterval(function() {
+     var seconds = t;
+     console.log(t);
+     document.getElementById("demo").innerHTML = seconds + "<br> seconden ";
+     if (t < 0) {
+       clearInterval(x);
+       document.getElementById("demo").innerHTML = "Momentje, je foto wordt zo getoond";
+       console.log("Wacht 5 seconden")
+       window.setTimeout(function(){
+       window.location.href = "/viewfoto";
+        }
+        , 5000);
+    }
+     t = t -1;
+   }, 1000);
+   });
+
+
+</script>
+
+
+  </body>
+</html>
