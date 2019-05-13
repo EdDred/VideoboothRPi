@@ -20,7 +20,13 @@ socketio = SocketIO(app, async_mode='gevent')
 import gevent
 import os
 
-version = 'v13_3'
+version = 'v13_4'
+
+# v13_4 12-05-2019
+# fixed last file issue, get file from SD instead of UBS card
+# remove ts from sdcard to save room
+# reduced some timers
+
 #### v13_2
 #### Webpage buttonpress changed to only 1 time, until done
 
@@ -35,6 +41,7 @@ target_dir = "/home/pi/Videobooth/static/video/Recordings/"
 # Directory: "/static/video/Recordings/"  needs to be used as a linked folder to /mnt/data/Recordings where the recordings are available
 # flask needs to adress these files via /static
 flaskimagedir = "/static/video/Recordings/"
+videotimer = 20
 
 def buttonmoviepressed():
     print("The Movie button is pressed")
@@ -42,8 +49,9 @@ def buttonmoviepressed():
     videobooth.video_record_start()
 
     # Time sleep determins the recording time
-    time.sleep(30)
+    time.sleep(videotimer)
     videobooth.video_record_stop()
+    time.sleep(5)
     return redirect(url_for('recordvideo'))
 
 
@@ -76,7 +84,7 @@ def home():
         # return redirect(url_for('recordvideo'))
         videobooth.video_record_start()
         # # Time sleep to be moved if recordvideo page will be used
-        time.sleep(30)
+        time.sleep(videotimer)
         videobooth.video_record_stop()
         # Delay needed to handle video convert and move
         time.sleep(5)
@@ -133,6 +141,7 @@ def entry():
 # Route to view video file
 @app.route("/view" , methods=['GET', 'POST'])
 def view():
+# testing timer 12-05-2019
     time.sleep(5)
     print("Play video in browser")
     webpath = getvideofile()
@@ -168,6 +177,8 @@ def stoprecordvideo():
     videobooth.video_record_stop()
     lastfile,path,name = videobooth.lastfile(target_dir,'mp4')
     webpath = flaskimagedir+name
+    print("Sleep timer in stop record video 5 seconds")
+    time.sleep(5)
     return render_template('view.html', data=webpath)
 #
 
