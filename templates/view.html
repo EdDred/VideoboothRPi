@@ -11,86 +11,35 @@
 
 <!--    <h1>View Page</h1> -->
 
-  <form action="{{url_for('entry')}}" method="POST">
-  <button class="button" type="submit"> Start Pagina </button>
-</form>
-    <h2 id="demo"></h2>
-    <video width="600" height="400" controls autoplay>
-     <source src={{data}} type="video/mp4">
-   Your browser does not support the video tag.
-   </video>
-
-
-
+<div id="container1">
+  <div id="container1 columnleft">
+        <form action="{{url_for('entry')}}" method="POST">
+          <button class="buttonsmall buttonsmall4" type="submit" align="center"> Start Pagina </button>
+        </form>
+        <form method="post" action="/">
+          <input type="submit"  class="buttonsmall buttonsmall3" value="Video opnemen" name="Videoopnemen"/><br>
+          <input type="submit" class="buttonsmall buttonsmall4" value="Video afspelen" name="Videoafspelen"/><br>
+          <input type="submit"  class="buttonsmall" value="Foto maken" name="Fotomaken"/><br>
+          <input type="submit" class="buttonsmall buttonsmall4" value="Foto kijken" name="Fotokijken"/>
+      </form>
+  </div>
+</div>
+    <div id="columnright">
+          <h3><span id="demo"></span>
+      </h3>
+      <div id="columnright columnmid">
+          <video width="600" height="400" controls autoplay>
+          <source src={{data}} type="video/mp4">
+          Your browser does not support the video tag.
+          </video>
+      </div>
     </div>
-    <script type="text/javascript" src="../static/socket.io.min.js"></script>
-     <script>
-     var socket = io.connect('http://' + document.domain + ':' + location.port);
-
-     var t = 18
-
-       function videomessage(){
-         var x = setInterval(function() {
-         var seconds = t;
-         console.log(t);
-         document.getElementById("demo").innerHTML ="De opname loopt nog <br>" + seconds + "<br> seconden ";
-         if (t < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "Momentje, je video wordt zo getoond";
-            console.log("Wacht 10 seconden")
-            window.setTimeout(function(){
-              window.location.href = "/view"
-            }
-            , 10000);
-         }
-         t = t -1;
-         }, 1000);
-       };
-
-       function fotomessage(fototijd){
-          fototijd = 5
-          console.log(fototijd)
-          socket.emit('message', 'Hi server, how are you?');
-          var x = setInterval(function() {
-          var seconds = fototijd;
-          console.log(fototijd);
-          document.getElementById("demo").innerHTML ="Je foto wordt gemaakt over <br> " + seconds + "<br> seconden ";
-          if (fototijd < 0) {
-             clearInterval(x);
-             document.getElementById("demo").innerHTML = "Momentje, je foto wordt zo getoond";
-             console.log("Wacht 10 seconden")
-             window.setTimeout(function(){
-               window.location.href = "/viewfoto"
-             }
-             , 5000);
-         }
-          fototijd = fototijd -1;
-         }, 1000);
-
-        };
-
-       //
-       // socket.on('connect', function(data) {
-       //      console.log('connected');
-       //      document.getElementById("demo").innerHTML ="Connected ";
-       //
-       // });
-
-       socket.on('message', function(data) {
-            console.log('iets')
-            console.log(data);
-            if (data == 'Foto') {
-            // document.getElementById("demo").innerHTML ="ButtonPress Foto";
-            fotomessage()
-          }
-            if (data == 'Video') {
-              // document.getElementById("demo").innerHTML ="ButtonPress Video";
-              videomessage()
-            }
-       });
+</div>
 
 
-     </script>
+
+<script type="text/javascript" src="../static/socket.io.min.js"></script>
+<script type="text/javascript" src="../static/main.js"></script>
 
   </body>
 </html>

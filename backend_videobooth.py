@@ -4,6 +4,8 @@ import glob
 from subprocess import Popen
 from datetime import datetime
 
+# V14_2 23-05-2019
+
 # Changes 12-05-2019
 # change max to min in latest file
 # remove ts file after conversion
@@ -17,10 +19,9 @@ from datetime import datetime
 #
 class Videobooth:
     def __init__(self):
-        # pass
         # Directory of PICAM Recordings https://github.com/iizukanao/picam
         self.dir = "/home/pi/picam/rec/archive/"
-        self.photodir = "/home/pi/picam/archive/"
+        self.photodir = "/mnt/data/Recordings/"
         self.target_dir = "/mnt/data/Recordings/"
         self.typefile = ""
 
@@ -34,10 +35,13 @@ class Videobooth:
         # Recording time moved to javascript.
         os.system('touch /home/pi/picam/hooks/stop_record')
         print("Recording stopped")
-        time.sleep(5) # Delay is needed before the file is available in OS
+        print("Delay timer = 1 seconds")
+        time.sleep(1) # Delay is needed before the file is available in OS
         latest_file,path,latestfilename = self.lastfile(self.dir,'ts')
+        print("Start Conversion " + time.ctime())
         self.convert_to_mp4(latest_file)
-        time.sleep(5) # Delay is needed before the file is available in OS
+        print("Delay timer = 1 seconds")
+        time.sleep(1) # Delay is needed before the file is available in OS
         latest_file,path,latestfilename  = self.lastfile(self.dir,'mp4')
         print('mp4 latest file = '+ latest_file)
         os.system('sudo cp ' +  latest_file + " " + self.target_dir )
@@ -54,8 +58,6 @@ class Videobooth:
         time.sleep(1)
         # Restart the Picam Service
         os.system('sudo service picam restart')
-        # Delay to get the service running
-        time.sleep(2)
         self.latest_file,self.path,self.latestfilename  = self.lastfile(self.photodir,'jpg')
         os.system('mv ' +  self.latest_file + " " + self.target_dir )
         print("Photo taken")
@@ -78,34 +80,21 @@ class Videobooth:
 
     def lastfile(self,dirtosearch,typefile):
         # below dirtosearch added for test purposes. bacuase of showing the wrong file
-	#dirtosearch = "/home/pi/picam/rec/archive/"
         print('typefile = ' + typefile)
         if typefile == 'mp4':
             dirtosearch = self.dir
         else:
             print('Other than mp4')
-        print("Target Dir (from backend):" + dirtosearch + " type of file to search " + typefile)
+        print("Target Dir (from backend): " + dirtosearch + " type of file to search " + typefile)
         # for testing on windows machine use:
         # list_of_files = glob.glob("*." + typefile)
 
         # FOR USE ON RASPBERRY PI:
-        list_of_files = glob.glob(dirtosearch + '*.' + typefile)
+        list_of_files = sorted(glob.iglob(dirtosearch + '*.' + typefile), key=os.path.getctime, reverse=True)
         print("List of files = " + str(list_of_files))
-        # 12-5-2019 change to min from max
-#        if typefile == 'mp4':
-           # in case of mp4 file will be taken from SDcard then use min to get latest file
-#            latest_file = min(list_of_files, key=os.path.getctime)
-#        else:
-            # otherwise use max.
+        print(" Testfile selection = " + list_of_files[0])
         latest_file = max(list_of_files, key=os.path.getctime)
         path, latestfilename = os.path.split(latest_file)
+
         print("Backend latest_file = " + latest_file)
         return latest_file,path,latestfilename
-
-    def showphoto(self,latestfile):
-        # print("Show photo")
-        # print("latestfile = "+ latestfile)
-        # frontend_videobooth.create_widgets()
-        # frontend_videobooth.create_image()
-        # create_image(latestfile)
-        return latestfile

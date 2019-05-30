@@ -1,36 +1,82 @@
+/*  */
+/*
+v 14_2
+Optimize button layout for screen 1024*600
+delete obsolete tags
+
+*/
+
+
 html,body {
 height:100%;
 margin:0;
 }
-
-
 
 h1 {
 font-family: Arial, sans-serif;;
 font-size: 30px;
 color: #DDCCCE;
 margin-top: 40px;
-
 }
 
 a:link{
   color: white;
-
 }
 a:visited{
   color: yellow;
 }
 
 .container {
-margin: 0 auto;
+/* margin: 0 auto; */
 width: 100%;
 height:100%;
-/* background-color: #006666; */
 background-color: #000000;
 color: #e6ffff;
-
 text-align:center;
 }
+
+#container1 {
+  width: 35%;
+  background-color: #000000;
+  float:left;
+  height: 100%;
+  }
+
+
+#container1 #columnleft {
+float:left;
+background-color: #000000;
+color: #e6ffff;
+text-align:center;
+}
+
+#columnright {
+  width: 65%;
+  float:right;
+  background-color: #000000;
+  /* background-color: #DDDDDD; */
+  text-align:center;
+  height: 600px;
+  display: inline-block;
+}
+
+#columnright #columnmid{
+float:right;
+/* width: 40%; */
+background-color: #000000;
+text-align:center;
+vertical-align: middle;
+height: 600px;
+display: inline-block;
+}
+
+#columnright #columnrightright{
+  background-color: #000000;
+  text-align:center;
+  display: inline-block;
+}
+
+/* Big buttons for homepage */
 
 .button {
   background-color: #4CAF50; /* Green */
@@ -43,19 +89,7 @@ text-align:center;
   font-size: 30px;
   width: 30%;
   margin: 1%;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-.buttonsmall2 {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 30px;
-  width: 30%;
-  margin: 1%;
+  line-height: 70px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
@@ -64,93 +98,41 @@ text-align:center;
 .button4 {background-color: #e7e7e7; color: black;} /* Gray */
 .button5 {background-color: #555555;} /* Black */
 .button:hover {background-color: #3e8eee}
-
 .button:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
+/* Smaller Button for viewpages */
 
-
-.container_table {
-margin: 0 auto;
-width: 100%;
-background-color: #006666;
-color: #e6ffff;
-
-text-align:center;
+.buttonsmall {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 50px;
+  /* display: inline-block; */
+  font-size: 20px;
+  width: 60%;
+  margin: 5px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.left {
-align: left;
-text-align: left;
+.buttonsmall3 {background-color: #f44336;} /* Red */
+.buttonsmall4 {background-color: #e7e7e7; color: black;} /* Gray */
+.buttonsmall:hover {background-color: #3e8eee}
 
+
+.buttonsmall:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
-.center {
-text-align: center;
-background-color: #008CBA;
-}
 
 .group{
 /* margin-top: 1%; */
-
 }
-
-/* .container h1 {
-font-family: Arial, sans-serif;;
-font-size: 30px;
-color: #DDCCCE;
-margin-top: 80px;
-
-} */
-/*
-.container form {
-  margin: 30px;
-}
-
-.container input{
-width: 350px;
-height: 15px;
-font-size: 15px;
-margin: 5px;
-padding: 20px;
-transition: all 0.2s ease-in-out;
-color: #000000;
-
-}
-
-.container p {
-margin: 200px;
-}
-
-.container table {
-border: 1px solid black;
-align: center;
-width:70%;
-margin-left:15%;
-margin-right:15%;
-color: #ffffff;
-border-collapse: collapse;
-text-align: center;
-}
-
-th, td {
-  padding: 5px;
-  text-align: right;
-}
-
-tr{
-  border: 1px solid white;
-}
-
-#headertab {
-  color:#ffff00;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.cellvideo{
-align: center;
-} */
