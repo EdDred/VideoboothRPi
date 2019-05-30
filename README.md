@@ -30,7 +30,7 @@ Since I want to use this when not being connected to internet, I need to do the 
 - at startup: set the correct date : sudo date -s '2017-02-05 15:30:00' (since the pi will reset time at every poweroff)
 - start the service: /usr/bin/python3 /home/pi/Videobooth/Web_videobooth.py
 - Connect to wifi : vkwvideobooth
-- open 192.168.4.1:5006 (or other port if mentioned on startup)
+- open 192.168.4.1:5007 (or other port if mentioned on startup)
 
 Example:
 
